@@ -294,8 +294,7 @@ async function renderTableBox(table) {
                             <span>${Item.name}</span>
                             <span>${Item.price}₺</span>
                         </div>
-                        <div class="item-controls">                       
-                            <button id="cansel-${Item.id}"><img src="imgs/forbidden.png" alt=""></button>
+                        <div class="item-controls">                                                   
                             <button id="addExtra-${Item.id}"><img src="imgs/plus.png" alt=""></button>
                             <button id="processed-${Item.id}"><img src="imgs/checkmark.png" alt=""></button>
                         </div>
@@ -303,18 +302,6 @@ async function renderTableBox(table) {
                     <div class="description">${Item.description}</div>
                 </div>
             `);
-
-            document.getElementById(`cansel-${Item.id}`).addEventListener("click", async () => {
-                try {
-                    Loading.classList.remove("hidden");
-                    await UpdateItem(Item.id, Item.orderId, Item.name, Item.description, Item.price, Item.printerName, "Canseled");
-                    renderTableBox(table);
-                    Loading.classList.add("hidden");
-                }
-                catch (err) {
-                    alert("⚠️ " + err.message);
-                }
-            });
 
             document.getElementById(`addExtra-${Item.id}`).addEventListener("click", async () => {
                 await AddExtraToOrderItem(Item.id, table);
