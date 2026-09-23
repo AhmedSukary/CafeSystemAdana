@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnrukiCafeAdana</title>
+    <link rel="stylesheet" href="CSS/index.css" />
+    <link rel="stylesheet" href="CSS/login.css" />
+    <link rel="icon" type="image/x-icon" href="imgs/favicon (1).ico">
+    <link rel="manifest" href="./manifest.json">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Anruki Cafe">
+
+    <link rel="apple-touch-icon" href="./imgs/icon-192.png">
+</head>
+
+<body>
+    <div class="login">
+        <img class="logo" src="imgs/coffee.png" alt="">
+        <div class="title">Cafe System Adana</div>
+        <div class="username">
+            <img src="imgs/user.png" alt="">
+            <span>UserName</span>
+            <input type="text" name="" id="username" required>
+        </div>
+        <div class="password">
+            <img src="imgs/padlock.png" alt="">
+            <span>Password</span>
+            <input type="password" name="" id="password" required>
+        </div>
+        <div class="loginBtn">
+            <button id="loginBtn">Login <img src="imgs/circle (1).png" alt=""></button>
+        </div>
+        <p id="errorMessage" class="error-message"></p>
+    </div>
+    <script type="module" src="JS/login.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js")
+                    .then(registration => {
+                        console.log("Service Worker registered:", registration.scope);
+                    })
+                    .catch(error => {
+                        console.error("Service Worker registration failed:", error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>

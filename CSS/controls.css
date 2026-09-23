@@ -1,0 +1,37 @@
+.order-item-control {
+    width: 100%;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.order-item-control .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-item-control .info .details {
+    display: flex;
+    gap: 10px;
+}
+
+.order-item-control .info .controls {
+    display: flex;
+    gap: 10px;
+}
+
+.order-item-control .info .controls button {
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-item-control .info .controls button img {
+    width: 30px;
+    height: 30px;
+}
+
+.order-item-control input {
+    width: 100%;
+}

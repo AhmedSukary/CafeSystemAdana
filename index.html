@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnrukiCafeAdana</title>
+    <link rel="stylesheet" href="CSS/index.css" />
+    <link rel="icon" type="image/x-icon" href="imgs/favicon (1).ico">
+    <link rel="manifest" href="./manifest.json">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Anruki Cafe">
+
+    <link rel="apple-touch-icon" href="./imgs/icon-192.png">
+
+</head>
+
+<body>
+    <div id="loading" class="loading hidden">
+        <span class="spinner"></span>
+        <p>Please wait ...</p>
+    </div>
+
+    <div id="tableBox" class="hidden"></div>
+
+    <div id="emptyTablesBox" class="hidden"></div>
+
+    <div id="extraOrderItemBox" class="hidden"></div>
+
+    <section id="section">
+        <div id="tables" class="tables">
+        </div>
+        <div id="order" class="order">
+            <div class="status">
+                <div class="details">
+                    <div>Table Number: <span id="tableNumber">???</span></div>
+                </div>
+                <button id="addExtraToOrder"><img src="imgs/plus.png" alt=""></button>
+                <button id="canselOrder"><img src="imgs/forbidden.png" alt=""></button>
+            </div>
+            <div id="orderItems" class="items"></div>
+            <div class="notes">
+                <span>Notes:</span><input id="notes" type="text">
+            </div>
+            <div class="print">
+                <div>Total Amount: <span id="orderTotalAmount">0₺</span></div>
+                <button id="sendOrder"><img src="imgs/printer (1).png" alt=""></button>
+            </div>
+        </div>
+        <div class="Categories">
+            <button class="categoryBtn active">1</button>
+            <button class="categoryBtn">2</button>
+            <button class="categoryBtn">3</button>
+            <button class="categoryBtn">4</button>
+            <button class="categoryBtn">5</button>
+            <button class="categoryBtn">6</button>
+            <button class="categoryBtn">7</button>
+            <button class="categoryBtn">8</button>
+            <button class="categoryBtn">9</button>
+            <button class="categoryBtn">10</button>
+            <button class="categoryBtn">11</button>
+            <button class="categoryBtn">12</button>
+            <button class="categoryBtn">13</button>
+            <button class="categoryBtn">14</button>
+            <button class="categoryBtn">15</button>
+        </div>
+        <div id="products" class="products"> </div>
+    </section>
+
+    <footer id="footer">
+        <div>
+            <a><img src="imgs/user.png" alt=""><Span id="useingSystemName">???</Span></a>
+        </div>
+        <div>
+            <a id="logout"><img src="imgs/logout.png" alt="">Logout</a>
+        </div>
+    </footer>
+
+    <script type="module" src="JS/main.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./service-worker.js")
+                .then(registration => {
+                    console.log("Service Worker registered:", registration.scope);
+                })
+                .catch(error => {
+                    console.error("Service Worker registration failed:", error);
+                });
+        });
+    }
+</script>
+</body>
+
+</html>

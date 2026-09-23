@@ -1,0 +1,728 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --green-color: #009688;
+    --red-color: #e91e63;
+    --blue-color: #2196f3;
+    --text: #000000;
+    --bg: #b4b4b4;
+    --bg-light: #f9f9f9;
+}
+
+body {
+    position: relative;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--bg);
+    color: var(--text-light);
+}
+
+a {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    display: block;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text);
+    transition: var(--transition);
+    background-color: transparent;
+}
+
+
+.error-message {
+    color: var(--red-color);
+}
+
+.loading {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-light);
+    z-index: 10000;
+}
+
+.spinner {
+    display: block;
+    margin: 5px auto;
+    width: 35px;
+    height: 35px;
+    border: 5px solid var(--bg);
+    border-top-color: var(--blue-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#tableBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid var(--text);
+    background-color: var(--bg-light);
+    z-index: 1000;
+    padding: 5px;
+}
+
+#tableBox .closeBtn {
+    display: flex;
+    justify-content: end;
+}
+
+#tableBox .closeBtn button {
+    width: 30px;
+    height: 30px;
+}
+
+#tableBox .table {
+    display: flex;
+    justify-content: center;
+}
+
+#tableBox .table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+}
+
+#tableBox .table.Processing {
+    color: var(--red-color);
+}
+
+#tableBox .table.Processed {
+    color: var(--green-color);
+}
+
+#tableBox .table img {
+    width: 60px;
+    height: 60px;
+}
+
+#tableBox .order {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--text);
+
+}
+
+#tableBox .order .orderItems {
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid var(--text);
+    padding: 5px;
+}
+
+#tableBox .order .orderItems .item {
+    border: 1px solid var(--text);
+    padding: 5px;
+}
+
+#tableBox .order .orderItems .item.Canseled {
+    background-color: var(--red-color);
+}
+
+#tableBox .order .orderItems .item.Processed {
+    background-color: var(--green-color);
+}
+
+#tableBox .order .orderItems .item .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#tableBox .order .orderItems .item .info .details {
+    display: flex;
+    gap: 10px;
+}
+
+#tableBox .order .orderItems .item .info .item-controls {
+    display: flex;
+    align-items: start;
+    gap: 25px;
+}
+
+#tableBox .order .orderItems .item .info .item-controls button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tableBox .order .orderItems .item .info .item-controls button img {
+    width: 30px;
+    height: 30px;
+}
+
+#tableBox .order .orderItems .item .description {
+    width: 100%;
+}
+
+#tableBox .order .total {
+    font-weight: bold;
+    padding: 5px;
+}
+
+#tableBox .controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#tableBox .controls button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+
+}
+
+#tableBox .controls button img {
+    width: 40px;
+    height: 40px;
+}
+
+#tableBox .totalAmount {
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+#emptyTablesBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid var(--text);
+    background-color: var(--bg-light);
+    z-index: 1000;
+    padding: 5px;
+}
+
+#emptyTablesBox .closeBtn {
+    display: flex;
+    justify-content: end;
+}
+
+#emptyTablesBox .closeBtn button {
+    width: 30px;
+    height: 30px;
+}
+
+#emptyTablesBox .switchTable {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+#emptyTablesBox .switchTable .currentTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid, var(--text);
+}
+
+#emptyTablesBox .switchTable .currentTable.Processing {
+    background-color: var(--red-color);
+
+}
+
+#emptyTablesBox .switchTable .currentTable.Processed {
+    background-color: var(--green-color);
+}
+
+#emptyTablesBox .switchTable span {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#emptyTablesBox .switchTable .capyToTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid, var(--text);
+}
+
+#emptyTablesBox .emptyTables {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    border: 1px solid, var(--text);
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#emptyTablesBox .emptyTables .table {
+    padding: 5px;
+    border: 1px solid, var(--text);
+}
+
+#emptyTablesBox .emptyTables .table button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#emptyTablesBox .completeCapyToTable {
+    display: flex;
+    justify-content: center;
+}
+
+#extraOrderItemBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid var(--text);
+    background-color: var(--bg-light);
+    z-index: 1000;
+    padding: 5px;
+
+}
+
+#extraOrderItemBox .closeBtn {
+    display: flex;
+    justify-content: end;
+}
+
+#extraOrderItemBox .closeBtn button {
+    width: 30px;
+    height: 30px;
+}
+
+#extraOrderItemBox .checkAll {
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 11px;
+}
+
+#extraOrderItemBox .checkAll input {
+    width: 50px;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    border: 1px solid var(--text);
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra .orderItemToAddExtra {
+    border: 1px solid var(--text);
+    width: 100%;
+    padding: 5px;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra .orderItemToAddExtra .details {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra .orderItemToAddExtra .details input {
+    width: 50px;
+    margin: 0;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra .orderItemToAddExtra .description {
+    display: flex;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra .orderItemToAddExtra .description textarea {
+    width: 100%;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra .orderItemToAddExtra .description .controls {
+    display: flex;
+    gap: 5px;
+}
+
+#extraOrderItemBox .orderItemsToAddExtra .orderItemToAddExtra .description .controls button img {
+    width: 35px;
+}
+
+#extraOrderItemBox #extraOrderItemBoxCompleteBtn {
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#extraOrderItemBox .extraOrderItems {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    border: 1px solid var(--text);
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+
+#extraOrderItemBox .extraOrderItems .extraOrderItem {
+    display: inline-block;
+    border: 1px solid var(--text);
+    height: fit-content;
+    padding: 5px;
+    margin: 5px;
+}
+
+section {
+    position: relative;
+    flex-grow: 1;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    width: 100%;
+    padding-left: 75px;
+    flex: 1;
+    min-height: 0;
+}
+
+section .tables {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    left: 0;
+    width: 70px;
+    height: 100%;
+    gap: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--bg-light);
+}
+
+.tables .table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50px;
+    height: 65px;
+    border: 1px solid var(--text);
+}
+
+.tables .table button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    height: 65px;
+}
+
+.tables .table.Processing {
+    background-color: var(--red-color);
+    color: var(--bg-light);
+}
+
+.tables .table.Processed {
+    background-color: var(--green-color);
+    color: var(--bg-light);
+}
+
+.tables .table.Selected {
+    background-color: var(--blue-color);
+    color: var(--bg-light);
+}
+
+.tables .table.Processing button {
+    color: var(--bg-light);
+}
+
+.tables .table.Processed button {
+
+    color: var(--bg-light);
+}
+
+.tables .table.Selected button {
+    color: var(--bg-light);
+}
+
+.tables .table button img {
+    width: 40px;
+    height: 40px;
+}
+
+section .order {
+    width: 100%;
+    padding: 5px;
+    padding-top: 0px;
+    background-color: var(--bg-light);
+}
+
+section .order .titel {
+    font-weight: bold;
+}
+
+section .order .status {
+    display: flex;
+    align-items: center;
+}
+
+section .order .status .details {
+    width: 100%;
+}
+
+section .order .status .details div {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: fit-content;
+}
+
+section .order .status button {
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+section .order .status button img {
+    width: 40px;
+    height: 40px;
+}
+
+section .order .items {
+    width: 100%;
+    height: 250px;
+    padding: 5px;
+    border: 1px solid var(--text);
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 5px;
+}
+
+section .order .item {
+    width: 100%;
+    border: 1px solid var(--text);
+    padding: 5px;
+    background-color: var(--bg-light);
+}
+
+section .order .item .info {
+    display: flex;
+    justify-content: space-between;
+}
+
+section .order .item .info .details {
+    display: flex;
+    gap: 10px;
+}
+
+section .order .item .info .controls {
+    display: flex;
+    gap: 5px;
+}
+
+section .order .item .info .controls button {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+}
+
+section .order .item .info .controls button img {
+    width: 20px;
+    height: 20px;
+}
+
+section .order .item .description {
+    width: 100%;
+}
+
+section .order .notes {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+section .order .notes span {
+    color: var(--blue-color);
+    font-weight: bold;
+}
+
+section .order .notes input {
+    width: 100%;
+}
+
+section .order .print {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+section .order .print button img {
+    width: 50px;
+    height: 50px;
+}
+
+section .order .print button {
+    background-color: var(--bg-light);
+    padding: 5px;
+}
+
+section .Categories {
+    flex-shrink: 0;
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    justify-content: space-between;
+    background-color: var(--bg-light);
+    overflow-x: scroll;
+}
+
+section .Categories button {
+    background-color: var(--bg-light);
+    min-width: 40px;
+    min-height: 40px;
+    border: 1px solid var(--text);
+}
+
+section .Categories button.active {
+    background-color: var(--blue-color);
+    color: var(--bg-light);
+}
+
+section .products {
+    flex-grow: 1;
+    min-height: 0;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+    width: 100%;
+    padding: 5px;
+}
+
+section .products .product {
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--text);
+    width: 130px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+section .products .product .name {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+section .products .product .controls {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: start;
+    padding-right: 5px;
+    padding-left: 5px;
+    
+}
+
+section .products .product .controls button img {
+    width: 25px;
+    height: 25px;
+}
+
+section .products .product .send {
+    width: 100%;
+    border: 1px solid var(--text);
+    border-left: none;
+    border-right: none;
+    background-color: var();
+}
+
+section .products .product .send img {
+    width: 25px;
+    height: 25px;
+}
+
+footer {
+    margin: auto;
+    margin-top: 5px;
+    min-width: 350px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--bg-light);
+    padding: 5px;
+}
+
+footer div a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+footer img {
+    width: 25px;
+}
