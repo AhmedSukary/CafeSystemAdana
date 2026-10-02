@@ -433,6 +433,7 @@ section {
 }
 
 section .tables {
+    flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -440,7 +441,6 @@ section .tables {
     overflow-y: scroll;
     left: 0;
     width: 100%;
-    height: 100%;
     gap: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -452,8 +452,8 @@ section .tables {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border: 1px solid var(--text);
 }
 
@@ -496,8 +496,8 @@ section .tables {
 }
 
 .tables .table button img {
-    width: 64px;
-    height: 64px;
+    width: 50px;
+    height: 50px;
 }
 
 section .order {
@@ -662,7 +662,7 @@ section .products .product {
     flex-direction: column;
     align-items: center;
     border: 1px solid var(--text);
-    width: 130px;
+    width: 110px;
     font-weight: bold;
     font-size: 16px;
 }
