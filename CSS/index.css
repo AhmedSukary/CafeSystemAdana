@@ -449,13 +449,14 @@ button {
 
 section {
     position: relative;
-    flex: 1 1 auto;
+    flex: 1 1 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     min-width: 350px;
     width: 100%;
     min-height: 0;
+    height: 0;
     overflow: hidden;
 }
 
