@@ -92,6 +92,7 @@ button {
     position: absolute;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -139,16 +140,22 @@ button {
 }
 
 .tableBox .order {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
+    height: 100%;
     padding: 5px;
     border: 1px solid var(--text);
-    overflow-y: scroll;
 }
 
 .tableBox .order .orderItems {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
     gap: 5px;
+    height: 0;
     border: 1px solid var(--text);
     padding: 5px;
 }
