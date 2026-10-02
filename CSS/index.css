@@ -442,9 +442,8 @@ section .tables {
     left: 0;
     width: 100%;
     gap: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
     background-color: var(--bg-light);
+    margin-bottom: 40px;
 }
 
 .tables .table {
@@ -654,6 +653,7 @@ section .products {
     gap: 5px;
     width: 100%;
     padding: 5px;
+    margin-bottom: 40px;
 }
 
 section .products .product {
@@ -704,8 +704,9 @@ section .products .product .send img {
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
     margin: auto;
-    margin-top: 5px;
     min-width: 350px;
     width: 100%;
     display: flex;
