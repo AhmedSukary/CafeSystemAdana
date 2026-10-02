@@ -1,4 +1,4 @@
-const API_BASE = "https://localhost:7204/api";
+const API_BASE = "https://cafesystemapiadana.runasp.net/api";
 
 async function request(url, method, body) {
     const options = {
