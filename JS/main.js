@@ -602,8 +602,8 @@ async function AddExtraToOrderItem(orderItemId, table) {
         ExtraOrderItemBox.innerHTML = "";
         ExtraOrderItemBox.insertAdjacentHTML("beforeend", `
         <div class="closeBtn"><button id="extraOrderItemBoxCloseBtn"><img src="imgs/cross.png" alt=""></button></div>
-        <div id="orderItemsToAddExtra" class="orderItemsToAddExtra"></div>
-        <div id="extraOrderItems" class="extraOrderItems"></div>
+        <div class="orderItemsToAddExtra" id="orderItemsToAddExtra" class="orderItemsToAddExtra"></div>
+        <div class="extraOrderItems" id="extraOrderItems" class="extraOrderItems"></div>
         <button id="extraOrderItemBoxCompleteBtn"><img src="imgs/checkmark.png" alt=""></button>
     `);
 
@@ -674,10 +674,10 @@ AddExtraToOrder.addEventListener("click", async () => {
     ExtraOrderItemBox.innerHTML = "";
     ExtraOrderItemBox.insertAdjacentHTML("beforeend", `
         <div class="closeBtn"><button id="extraOrderItemBoxCloseBtn"><img src="imgs/cross.png" alt=""></button></div>
-        <div class="checkAll"><input type="checkbox" name="" id="checkAllOrderItemsToAddExtra"> All</div>
-        <div id="orderItemsToAddExtra" class="orderItemsToAddExtra"></div>
-        <div id="extraOrderItems" class="extraOrderItems"></div>
-        <button id="extraOrderItemBoxCompleteBtn"><img src="imgs/checkmark.png" alt=""></button>
+        <div class="checkAll"><input type="checkbox" name="" id="checkAllOrderItemsToAddExtra"> Hepsini seç</div>
+        <div class="orderItemsToAddExtra" id="orderItemsToAddExtra" class="orderItemsToAddExtra"></div>
+        <div class="extraOrderItems" id="extraOrderItems" class="extraOrderItems"></div>
+        <button class="extraOrderItemBoxCompleteBtn" id="extraOrderItemBoxCompleteBtn"><img src="imgs/checkmark.png" alt=""></button>
     `);
     ExtraOrderItemBox.classList.remove("hidden");
 
